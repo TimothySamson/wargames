@@ -1,0 +1,91 @@
+base64 --decode 
+
+* 1: KRYPTONISGREAT
+cat krypton2 | tr [A-Z] [N-ZA-M]
+
+* 2: ROTTEN
+
+cat krypton3 | tr [A-Z] [O-ZA-N]
+
+> cat ciphertext 
+MNOPQRSTUVWXYZABCDEFGHIJKL
+> cat enc 
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+
+rot12
+
+* 3: CAESARISEASY
+
+cat found{1..3} | tr ' ' "\n" | sort | uniq -c | sort
+
+2 CYDSN
+2 ENQYD
+2 GJDZS
+2 GJMNL
+2 JBJDS
+2 JBNCS
+2 JCGZV
+2 JDSQE
+2 JDSQJ
+2 JUDQF
+2 MNCGE
+2 NCZQV
+2 OQTYV
+2 QGWUJ
+2 QJCBG
+2 SNXBN
+2 SQNSU
+2 TQUJS
+2 UDCXJ
+2 VBGWB
+2 ZDBBV
+3 BXJDS
+3 QSUQN
+3 UDQFS
+3 UYSQN
+4 QFSUY
+4 SUYSQ
+
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+
+echo $I $IN | tr $(printf %${I}s | tr ' ' '.')\A-Z A-ZA-Z
+
+./freqanalysis.sh founds 1 | sort | uniq -c | sort -n
+      2 P
+      4 H
+      4 R
+     12 O
+     19 I
+     28 F
+     55 A
+     60 L
+     64 E
+     67 K
+     71 X
+     75 T
+     84 Y
+     86 M
+    129 W
+    130 V
+    132 Z
+    210 D
+    226 C
+    227 G
+    240 N
+    246 B
+    257 U
+    301 J
+    340 Q
+    456 S
+
+
+SQJUBNGCDZVWMYTXKELAFIORHP
+ETAOINSRHLDCUMFPGWYBVKXJQZ   # Real frequencies
+EATSORNIHCLDUPMFWGYBKVXJQZ   # YEYEYE
+^ ^  * *^ * *                  
+   3 2 3                     # Deviation
+
+
+* BRUTE
+
+
