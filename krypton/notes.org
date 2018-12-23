@@ -86,6 +86,29 @@ EATSORNIHCLDUPMFWGYBKVXJQZ   # YEYEYE
    3 2 3                     # Deviation
 
 
-* BRUTE
 
+* 4: BRUTE
+
+sed "s/./&\n/g" puts a new line after every character
+
+& looks like its a placeholder for the current substitution, and period
+is the current match
+
+sed  's/./&\n/g' | sed -n '1~6p'
+
+prints every 6th character starting from the first line
+
+echo $(printf '%d' \'{S,K,I,C,J,R}) | sed "s/../&\n/g" | awk '{print
+$0-64}'
+
+14    O
+6     F
+4     D
+-2    X
+5     E
+13    M
+
+sed "$!d" equals sed -n "$p"
+
+0 is an A
 
