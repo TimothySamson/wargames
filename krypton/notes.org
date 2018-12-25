@@ -112,3 +112,4 @@ sed "$!d" equals sed -n "$p"
 
 0 is an A
 
+echo {S,I}K{I,X}C{J,I,S}{R,C,F,Y} | tr -d " " | ./trans.sh -4 | sed "s/....../&\n/g"

