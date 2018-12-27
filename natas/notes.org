@@ -68,6 +68,11 @@ matched.
 
 * 11: U82q5TCMMQ9xuFoI3dYX61s7OZD9JKoK
 
+You know you could've xor'ed the entire thing by itself
+
+ciphertext = plaintext XOR key
+ciphertext XOR plaintext = KEY bruhh
+
 If i change 
 $partialKey .= $text2[$i] ^ 'f';
 into 
@@ -81,4 +86,14 @@ is the output. So
 qw8J is the XOR key!! Any cyclic permutation of Jqw8
 
 * 12: EDXp0pS26wLKHZy1rDBPUZk0RKfLGIR3
+
+Inspect element. Change the filename to .php on the hidden. Inject a php
+file in there , passthru() and cat the webpass
+
+* 13: jmLTY0qiPZBbaKc9341cqPQZBJv7MQbY
+
+get an image file, in the bottom write php code, and put it in the website
+
+* 14: Lg96M10TdfaPyVBkJdjymbllQ5L6qdl1
+
 

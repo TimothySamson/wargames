@@ -1,0 +1,38 @@
+* challenge1: 
+
+hex: 49276d...
+binary: 0100 1001 0010 0111 0110 1101
+        010010 010010 011101 101101
+
+pcalc 0y{010010,010010,011101,101101}
+	18              	0x12              	0y10010
+	18              	0x12              	0y10010
+	29              	0x1d              	0y11101
+	45              	0x2d              	0y101101
+
+Each equal sign means ignore the last two bits
+
+m % 3 = 1, one pads
+# 2 Missing = one pad
+ABCD ---- ----
+ABCD== ======
+
+m % 3 = 2, two pads 
+# 1 Missing = two pad
+ABCD EFGH ----
+ABCDEF GH====
+
+# 0 missing
+ABCD EFGH IJKL
+ABCDEF GHIJKL
+
+ABCD EFGH IJKL MNOP
+ABCDEF GHIJKL MNOP==
+
+
+492
+76d
+206
+b69
+6c6
+c696e6720796f7572
