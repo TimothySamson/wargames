@@ -87,3 +87,12 @@ int stringLen(char *string){
 	for (len=0; string[len] != '\0'; len++) {}
 	return len;
 }
+
+// Input: 'f0, ad, 33, etc'
+char hexToByte(char *hex){
+	int* hexArray = hexToInt(hex);
+	char base = hexArray[0];
+	base = appendBits(base, hexArray[1], 4);
+
+	return base;
+}
