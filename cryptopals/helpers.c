@@ -34,6 +34,17 @@ char *bitArray(int num){
 void printBits(int bits){
 	printf("%s\n", bitArray(bits));
 }
+
+void printByte(char byte){
+	int width = sizeof(byte) * 8;
+	
+	unsigned char mask = 1 << (width - 1);
+	int i;
+	for(i=0; i < width; i++){
+		printf("%c", '0' + ((byte & mask >> i) != 0));
+	}
+}
+
 // Get first nth bit from the right
 int fromRight(int num, int n){
 	// ones n long, 
@@ -95,4 +106,21 @@ char hexToByte(char *hex){
 	base = appendBits(base, hexArray[1], 4);
 
 	return base;
+}
+
+// Input: 'a', '?', etc
+char *byteToHex(char byte){
+	char *hexTable = "0123456789abcdef";
+
+	char hex2 = fromRight(byte, 4);
+	byte >>= 4;
+	char hex1 = fromRight(byte, 4);
+	
+	char *string = malloc(3);
+	string[2] = '\0';
+
+	string[0] = hexTable[hex1];
+	string[1] = hexTable[hex2];
+
+	return string;
 }

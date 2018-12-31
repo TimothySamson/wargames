@@ -16,6 +16,10 @@ function decode {
 	done
 }
 
-while read line; do
-	decode $line | sort | uniq -c | sort -n | tail -n 3
-done 
+function iterateThruLines {
+	while read line; do
+		decode $line | sort | uniq -c | sort -n | tail -n 3
+	done
+}
+
+iterateThruLines | sort -n | tail -n 50

