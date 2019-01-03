@@ -14,7 +14,6 @@ int numberOfOnes(char byte){
 	return number;
 }
 
-
 int hammingDistance(char char1, char char2){
 	char xor = char1 ^ char2;
 	return numberOfOnes(xor);
@@ -24,7 +23,7 @@ int hammingDistance(char char1, char char2){
 int stringDistance(char *base, char *repeat){
 	int distance = 0;
 	int i;
-	for(i=0; repeat[i] != '\0'; i++){
+	for(i=0; repeat[i] != '\0' && base[i] != '\0'; i++){
 		distance += hammingDistance(base[i], repeat[i]);
 	}
 
@@ -32,8 +31,17 @@ int stringDistance(char *base, char *repeat){
 }
 
 int main(int argc, char* argv[]){
-	char *string1 = "this is a test";
-	char *string2 = "wokka wokka!!!";
+	char *message = argv[1];
+	
+	int lengths[40];
 
-	printf("%d\n", stringDistance(string1, string2));
+	int i;
+	for(i = 0; i <= 39; i++){}
 }	
+
+
+
+
+
+
+

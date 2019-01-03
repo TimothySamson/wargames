@@ -86,6 +86,7 @@ int *hexToInt(char *hex){
 	return atoi;
 }
 
+// Input: 1 - 15
 char intToHex(int num){
 	if(0 <= num && num <= 9){
 		return num + 48;
@@ -123,4 +124,16 @@ char *byteToHex(char byte){
 	string[1] = hexTable[hex2];
 
 	return string;
+}
+
+int maxInt(int *intArray, int length){
+	int candidate = intArray[0];
+	
+	int i;
+	for(i=1; i < length; i++){
+		if(candidate < intArray[i])
+			candidate = intArray[i];
+	}
+
+	return candidate;
 }

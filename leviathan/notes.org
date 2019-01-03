@@ -3,9 +3,128 @@ cat ./backup/bookmarks.html | grep leviathan
 * 1: rioGegei8m
 
 ltrace <binary file>
-runs binary with the source code!!
+runs binary with the source code!!  
+
+1. ni = next instruction
+2. disass main
+3. break *main+115
+
+1. mov arg1, [arg2] 
+Take  the value at addr2 and put it in addr1
+Without square brackets, the actual pointer is coppied into the thing,
+but with it it will be dereferenced
+
+2. lea reg, addr
+Copies the address to the register
+
+3. Push / pop
+https://www.youtube.com/watch?v=e58iawzG2aA
+
+(gdb) disass main
+Dump of assembler code for function main:
+   0x0804853b <+0>:	lea    ecx,[esp+0x4]
+   0x0804853f <+4>:	and    esp,0xfffffff0
+   0x08048542 <+7>:	push   DWORD PTR [ecx-0x4]
+   0x08048545 <+10>:	push   ebp
+   0x08048546 <+11>:	mov    ebp,esp
+   0x08048548 <+13>:	push   ebx
+   0x08048549 <+14>:	push   ecx
+   0x0804854a <+15>:	sub    esp,0x20
+   0x0804854d <+18>:	mov    DWORD PTR [ebp-0x10],0x786573
+   0x08048554 <+25>:	mov    DWORD PTR [ebp-0x17],0x72636573
+   0x0804855b <+32>:	mov    WORD PTR [ebp-0x13],0x7465
+   0x08048561 <+38>:	mov    BYTE PTR [ebp-0x11],0x0
+   0x08048565 <+42>:	mov    DWORD PTR [ebp-0x1b],0x646f67
+   0x0804856c <+49>:	mov    DWORD PTR [ebp-0x20],0x65766f6c
+   0x08048573 <+56>:	mov    BYTE PTR [ebp-0x1c],0x0
+   0x08048577 <+60>:	sub    esp,0xc
+   0x0804857a <+63>:	push   0x8048690
+   0x0804857f <+68>:	call   0x80483c0 <printf@plt>
+   0x08048584 <+73>:	add    esp,0x10
+   0x08048587 <+76>:	call   0x80483d0 <getchar@plt>
+   0x0804858c <+81>:	mov    BYTE PTR [ebp-0xc],al
+   0x0804858f <+84>:	call   0x80483d0 <getchar@plt>
+   0x08048594 <+89>:	mov    BYTE PTR [ebp-0xb],al
+   0x08048597 <+92>:	call   0x80483d0 <getchar@plt>
+   0x0804859c <+97>:	mov    BYTE PTR [ebp-0xa],al
+   0x0804859f <+100>:	mov    BYTE PTR [ebp-0x9],0x0
+   0x080485a3 <+104>:	sub    esp,0x8
+
+# Calling strcmp
+   0x080485a6 <+107>:	lea    eax,[ebp-0x10]
+   0x080485a9 <+110>:	push   eax
+   0x080485aa <+111>:	lea    eax,[ebp-0xc]
+   0x080485ad <+114>:	push   eax
+>  0x080485ae <+115>:	call   0x80483b0 <strcmp@plt>
+   0x080485b3 <+120>:	add    esp,0x10
+   0x080485b6 <+123>:	test   eax,eax
+>> 0x080485b8 <+125>:	jne    0x80485e5 <main+170>
+   0x080485ba <+127>:	call   0x80483e0 <geteuid@plt>
+   0x080485bf <+132>:	mov    ebx,eax
+   0x080485c1 <+134>:	call   0x80483e0 <geteuid@plt>
+   0x080485c6 <+139>:	sub    esp,0x8
+   0x080485c9 <+142>:	push   ebx
+   0x080485ca <+143>:	push   eax
+   0x080485cb <+144>:	call   0x8048410 <setreuid@plt>
+   0x080485d0 <+149>:	add    esp,0x10
+   0x080485d3 <+152>:	sub    esp,0xc
+   0x080485d6 <+155>:	push   0x804869b
+   0x080485db <+160>:	call   0x8048400 <system@plt>
+   0x080485e0 <+165>:	add    esp,0x10
+   0x080485e3 <+168>:	jmp    0x80485f5 <main+186>
+>> 0x080485e5 <+170>:	sub    esp,0xc 
+   0x080485e8 <+173>:	push   0x80486a3
+   0x080485ed <+178>:	call   0x80483f0 <puts@plt>
+   0x080485f2 <+183>:	add    esp,0x10
+   0x080485f5 <+186>:	mov    eax,0x0
+   0x080485fa <+191>:	lea    esp,[ebp-0x8]
+   0x080485fd <+194>:	pop    ecx
+   0x080485fe <+195>:	pop    ebx
+   0x080485ff <+196>:	pop    ebp
+   0x08048600 <+197>:	lea    esp,[ecx-0x4]
+   0x08048603 <+200>:	ret    
+
+1. Breakpoint at main+115
+2. i r ebp
+3. x/3c 0xffffd6a8-0x10
+0xffffd698:	115 's'	101 'e'	120 'x'
 
 * 2: ougahZi8Ta
+When run through another program, a program that has setuid loses its
+escalated privelages
+https://unix.stackexchange.com/questions/15911/can-gdb-debug-suid-root-programs/15912
+
+4 = R_OK
+2 = W_OK
+1 = X_OK
+0 = F_OK
+
+mktemp -d
+ln -s /etc/leviathan_pass/leviathan3 .
+touch "anything leviathan"
+~/printfile "anything leviathan"
+
+or u couldve made a file with an injection in its filename
+
+bash -p preserves permissions apparently!
+
+* 3: Ahdiemoo1j
+
+same as one
+
+* 4: vuH0coox6m
+
+bin2ascii
+
+* 5: Tith4cokei
+
+ln -s /etc/leviathan_pass/leviathan6 /tmp/file.log && ./leviathan5
+
+* 6: UgaoFee4li
+
+break *main+87
+x/dw $ebp-0xc
+password is 7123
 
 
-
+* 7: ahy7MaeBo9
